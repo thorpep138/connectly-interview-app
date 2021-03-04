@@ -8,6 +8,7 @@ function ReviewSimulationButton({ text, chatWindowPrompt }) {
             onClick={ () => {
                 window.FB.CustomerChat.update({  
                     logged_in_greeting: chatWindowPrompt,
+                    logged_out_greeting: chatWindowPrompt
                   });
                 window.FB.CustomerChat.showDialog();
             }}>
