@@ -1,0 +1,16 @@
+.container {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+}
+
+.headerText {
+    color: black;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.simulationButtonsContainer {
+    display: flex;
+    justify-content: center;
+}
