@@ -1,4 +1,6 @@
 const processChatClientEventHandler = require('../../../modules/facebookMessenger/processChatClientEvent');
+const logger = require('../../../util/logger');
+const serverError = require('../../../util/serverError');
 
 async function processChatClientEvent(req, res) {
   const webhookEvents = getFacebookWebhookEvents({ req });
@@ -15,7 +17,10 @@ async function processChatClientEvent(req, res) {
     try {
       await processChatClientEventHandler({ event: webhook_event });
     } catch (error) {
-      // ignore errors so we process all webhook events  
+      // log the error and keep processing events 
+      if (!(error instanceof serverError)) {
+        logger.error(error);
+      }
     }
   });
   

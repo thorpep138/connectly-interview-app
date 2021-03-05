@@ -3,10 +3,8 @@ const serverError = require('../../util/serverError');
 const sendMessageToChatUser = require('./sendMessageToChatUser');
 
 async function processReviewMessageEvent({ event }) {
-    const query = `
-        INSERT INTO simulated_customer_reviews(review, createdAt) 
-        VALUES(${ db.escape(event.message.text) }, UTC_TIMESTAMP)
-    `;
+    const query = `INSERT INTO simulated_customer_reviews(review, createdAt) `
+        + `VALUES(${ db.escape(event.message.text) }, UTC_TIMESTAMP)`;
 
     try {
         await db.query(query).catch((error) => {
